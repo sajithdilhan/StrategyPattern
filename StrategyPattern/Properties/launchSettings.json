@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "StrategyPattern": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
