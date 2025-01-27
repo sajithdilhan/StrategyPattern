@@ -1,6 +1,6 @@
 ﻿namespace StrategyPattern
 {
-    internal class SmsNotificationService : IUserNotifier
+    public class SmsNotificationService : IUserNotifier
     {
         public void NotifyUser(string message, User user)
         {

@@ -21,11 +21,11 @@ static void ProcessUserOrder(IServiceProvider services)
         Id = 1,
         Name = "Test",
         Phone = "123123123",
-        NotifyPreferences = UserNotifyPreferences.Push
+        NotifyPreferences = UserNotifyPreferences.Email
     };
 
 
-    IUserNotifier userNotifier = user.NotifyPreferences switch
+    IUserNotifier? userNotifier = user.NotifyPreferences switch
     {
         UserNotifyPreferences.Email => services.GetKeyedService<IUserNotifier>("EmailService"),
         UserNotifyPreferences.Sms => services.GetKeyedService<IUserNotifier>("SmsService"),
