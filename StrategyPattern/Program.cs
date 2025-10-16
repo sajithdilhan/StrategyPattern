@@ -21,10 +21,10 @@ static void ProcessUserOrder(IServiceProvider services)
         Id = 1,
         Name = "Test",
         Phone = "123123123",
-        NotifyPreferences = UserNotifyPreferences.Email
+        NotifyPreferences = UserNotifyPreferences.Sms
     };
 
-
+    using var scope = services.CreateScope();
     IUserNotifier? userNotifier = user.NotifyPreferences switch
     {
         UserNotifyPreferences.Email => services.GetKeyedService<IUserNotifier>("EmailService"),
@@ -34,7 +34,6 @@ static void ProcessUserOrder(IServiceProvider services)
         UserNotifyPreferences.Post => throw new NotImplementedException(),
         _ => throw new NotImplementedException(),
     };
-
 
     var orderService = services!.GetService<IOrderNotificationService>();
     orderService!.SendNotificationToUser("Order processed", userNotifier!, user);
